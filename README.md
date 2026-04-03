@@ -38,19 +38,12 @@ export default defineConfig({
 });
 ```
 
-依存関係を追加した後は、通常どおり EmDash サイトを初期化して起動します。
-
-```bash
-pnpm install
-pnpm bootstrap
-pnpm dev
-```
+その後は、導入先の EmDash サイト側で通常どおり依存関係の解決と開発サーバーの起動を行ってください。
 
 ## 対応範囲
 
-- 本プラグインは `astro.config.mjs` に登録して使う config-based plugin です。
-- EmDash Marketplace 向けプラグインではありません。
-- `emdash@0.1.0` の標準プラグイン一覧画面では、プラグイン名や説明文は表示されず、プラグイン ID が表示されます。
+- `astro.config.mjs` から利用するための `japanesePlugin()` を公開しています。
+- パッケージには `./plugin` と `./admin` のエントリーポイントを含み、管理画面の文言置換を適用します。
 
 ## 開発
 
