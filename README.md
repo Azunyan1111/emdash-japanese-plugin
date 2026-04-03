@@ -4,9 +4,9 @@ EmDash 管理画面の英語 UI を日本語へ置換するプラグインです
 
 ## 概要
 
-- メニュー、ラベル、ボタン、プレースホルダー、説明文を日本語化します。
-- `admin.tsx` の副作用で管理画面 DOM を監視し、既存 UI へ後付けで翻訳を適用します。
-- 翻訳元カタログは `src/catalog/` 配下にファイル単位で保持しています。
+- 管理画面のメニュー、ラベル、ボタン、プレースホルダー、説明文を日本語化します。
+- 既存の EmDash 管理画面に対して、プラグイン側から翻訳を適用します。
+- 翻訳カタログは `src/catalog/` 配下で管理しています。
 
 ## インストール
 
@@ -38,40 +38,50 @@ export default defineConfig({
 });
 ```
 
-## 開発
+依存関係を追加した後は、通常どおり EmDash サイトを初期化して起動します。
 
-依存関係をインストールします。
+```bash
+pnpm install
+pnpm bootstrap
+pnpm dev
+```
+
+## 対応範囲
+
+- 本プラグインは `astro.config.mjs` に登録して使う config-based plugin です。
+- EmDash Marketplace 向けプラグインではありません。
+- `emdash@0.1.0` の標準プラグイン一覧画面では、プラグイン名や説明文は表示されず、プラグイン ID が表示されます。
+
+## 開発
 
 ```bash
 pnpm install
 ```
 
-テストを実行します。
-
 ```bash
 pnpm test
 ```
 
-翻訳カタログを再生成します。
+型検査とビルド:
+
+```bash
+pnpm typecheck
+pnpm build
+```
+
+翻訳カタログの再生成:
 
 ```bash
 pnpm extract:catalog
 ```
 
-## リリース対象
+公開用パッケージの確認:
 
-- `src/descriptor.ts`
-- `src/index.ts`
-- `src/admin.tsx`
-- `src/catalog/`
-- `README.md`
-- `CHANGELOG.md`
+```bash
+pnpm pack
+```
 
-## 配布確認
-
-- `pnpm pack --pack-destination ./work/release` で `emdash-japanese-plugin-0.1.0.tgz` を生成済みです。
-- `work/release-site` に新規 EmDash サイトを作成し、`.tgz` を `pnpm add` で導入した状態で `pnpm bootstrap` と `pnpm dev` が通ることを確認済みです。
-- 導入先の `/_emdash/api/admin/plugins` で `japanese` プラグインが `enabled: true` になることを確認済みです。
+公開対象には `dist/`, `README.md`, `CHANGELOG.md` のみを含めています。
 
 ## リポジトリ
 

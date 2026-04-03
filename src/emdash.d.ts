@@ -9,10 +9,7 @@ declare module "emdash" {
 
 	export interface PluginDefinition {
 		id: string;
-		name?: string;
 		version: string;
-		description?: string;
-		repositoryUrl?: string;
 		admin?: {
 			entry?: string;
 		};
