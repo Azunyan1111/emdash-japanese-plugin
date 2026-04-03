@@ -1,2 +1,8 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+emdash/node_modules/
+emdash/packages/plugins/japanese/node_modules/
 emdash/
-
+work/
